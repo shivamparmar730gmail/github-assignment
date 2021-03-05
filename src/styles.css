@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "./src/assets/fonts/Lato-Regular.tff"; */
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: url("./assets/fonts/Lato/Lato-Regular.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: "Lato-Bold";
+    src: url("./assets/fonts/Lato/Lato-Bold.ttf") format("opentype");
+}
+
+body {
+    font-family: 'Lato-Regular', sans-serif;
+    background-color: #f6f6f6;
+}
+
+.count{
+    font-family: 'Lato-Bold', sans-serif;
+}
+
+/* Header css start */
+
+.header {
+    background-color: #147abc;
+    height: 80px;
+}
+
+/* Header css end */
+
+/* Main css start */
+.main-container {
+    margin-top: 80px;
+    padding: 30px;
+}
+
+.github-user-details{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 200px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 6px 0px #888888;
+    padding: 10px;
+}
+
+.search-button {
+    background-color: #ffffff;
+}
+
+.search-button:hover {
+    background-color: #e7e6e6;
+}
+
+.input-group-append{
+    margin: 0px;
+}
+
+.panel-default{
+    border: 0px;
+}
+
+.card-header {
+    background-color: #ffffff;
+    border: 0px;
+    box-shadow: none;
+}
+
+.btn-link{
+    padding: 10px 30px;
+    float: right;
+    margin-right: 20px;
+    border: 2px solid;
+}
+
+.pagination-button{
+    float: right;
+}
+
+.not-found-details{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 6px 0px #888888;
+    padding: 10px;
+}
+
+.mt-15{
+    margin-top: 15px;
+}
+
+.mt-90{
+    margin-top: 90px;
+}
+
+/* Main css end */

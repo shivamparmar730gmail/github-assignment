@@ -1,0 +1,76 @@
+<!-- Header start-->
+<nav class="navbar navbar-expand-sm navbar-primary fixed-top header">
+    <div class="container">
+        <div class="col-md-6">
+            <form [formGroup]="sortForm">
+                <select name="sortBy" class="form-control" (change)="sortUser()" formControlName="sortBy" [(ngModel)] = "sortByType">
+                    <option value="name-ascending">Sort by name (A-Z)</option>
+                    <option value="name-descending">Sort by name (Z-A)</option>
+                    <option value="rank-ascending">Rank (1-10)</option>
+                    <option value="rank-descending">Rank (10-1)</option>
+                </select>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form [formGroup]="searchForm" (ngSubmit)="getGithubUsersList()">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search github users" formControlName="search">
+                    <div class="input-group-append">
+                        <button class="btn search-button" type="submit"><i class="fa fa-search"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<!-- Header end-->
+
+<!-- Main content start-->
+<div class="container main-container">
+    <h6 class="count" *ngIf="dataCount != 0">Total Results : {{ dataCount }}</h6>
+    <div class="github-user-details" *ngFor="let details of userDetails | paginate: { itemsPerPage: 5, currentPage: p }">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{details.avatar_url}}" alt="{{ details.login }}" width="100%" class="rounded-circle">
+            </div>
+            <div class="col-md-6">
+                <h1 class="mt-15">{{ details.login }}</h1>
+                <h6>Profile Url: {{ details.url }}</h6>
+                <h6 class="mt-90">Url: {{ details.organizations_url }}</h6>
+                <h6>Score: {{ details.score }}</h6>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        <div>
+            <accordion>
+                <accordion-group heading="Details" (click)="getUserDetails(details.login)">
+                    <table class="table table-striped" #userDetailsTable>
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">Issue</th>
+                                <th scope="col">Star</th>
+                                <th scope="col">Watchers</th>
+                                <th scope="col">Fork Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="{{details.login}}">
+                        </tbody>
+                    </table>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+    <div class="not-found-details" *ngIf="dataCount == 0">
+        No users found.
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-12" *ngIf="dataCount != 0">
+            <pagination-controls (pageChange)="p = $event" class="pagination-button"></pagination-controls>
+        </div>
+    </div>
+</div>
+<!-- Main content end -->
